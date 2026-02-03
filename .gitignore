@@ -1,0 +1,7 @@
+**/*.elf
+**/*.cex
+**/*.dex
+**/*.release
+**/*.debug
+**/BIN
+**/*.o
