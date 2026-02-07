@@ -12,7 +12,12 @@
 
 #undef  printf
 #define printf			_debug_printf
+#if DEBUG
+#define DPRINTF(...)
+#define DPRINTF2 _debug_printf
+#else
 #define DPRINTF			_debug_printf
+#endif
 #define DPRINT_HEX		debug_print_hex
 #define DPRINT_HEX_C	debug_print_hex_c
 
@@ -120,6 +125,7 @@ static INLINE void dump_stack_trace4(uint64_t *stack, unsigned int n)
 #define fatal(s) { while(1); }
 #define printf(...)
 #define DPRINTF(...)
+#define DPRINTF2(...)
 #define DPRINT_HEX(b, s)
 #define DPRINT_HEX_C(b, s)
 #define dump_stack_trace(n)

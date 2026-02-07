@@ -45,6 +45,9 @@
 #define MAKE_JUMP_VALUE(addr, to) ((0x12 << 26) | ((((to-(uint64_t)(addr))>>2)&0xFFFFFF) << 2))
 #define MAKE_CALL_VALUE(addr, to) ((0x12 << 26) | ((((to-(uint64_t)(addr))>>2)&0xFFFFFF) << 2)) | 1
 
+#define READ_JUMP_OFFSET(value) ((int32_t)(((value) & 0x03FFFFFC) << 6) >> 6)
+#define READ_CALL_OFFSET(value) ((int32_t)((((value) & ~1) & 0x03FFFFFC) << 6) >> 6)
+
 #define B(A)	MAKE_JUMP_VALUE(0, A)
 #define BL(A)	MAKE_CALL_VALUE(0, A)
 
