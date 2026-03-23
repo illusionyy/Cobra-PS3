@@ -430,7 +430,8 @@ static INLINE int process_read_iso_cmd(ReadIsoCmd *cmd)
 				}				
 
 				// 3k3y/Redump ISOs decryption on-the-fly (By Evilnat)
-				if(filepos == 0)
+				// Fix for splitted ISOs (By aldostools)
+				if(filepos == 0 && file == 0)
 				{
 					CellFsStat stat;
 					if(cellFsStat(discfile->files[file], &stat) == CELL_FS_SUCCEEDED)
